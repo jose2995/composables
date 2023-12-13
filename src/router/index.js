@@ -4,7 +4,7 @@ import Post from "../views/Post.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
-  { path: "/post/:id", name: "Post", component: Post },
+  { path: "/post/:id/:userId", name: "Post", component: Post },
 ];
 
 const router = createRouter({

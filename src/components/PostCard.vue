@@ -19,7 +19,7 @@
       width="150"
       height="150"
     />
-    <router-link :to="{ name: 'Post', params: { id: post.id } }">
+    <router-link :to="{ name: 'Post', params: { id: post.id, userId: props.post.userId } }">
       {{ post.title }}
     </router-link>
   </div>
@@ -28,5 +28,6 @@
 const props = defineProps({
   post: Object,
 });
+console.log(props.post)
 const post = { ...props.post };
 </script>
