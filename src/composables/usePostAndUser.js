@@ -13,9 +13,14 @@ export default function usePostAndUser(){
         posts.value = await response.json();
     }
 
+    /*Una altra manera de fer-ho es posar les esperes tant de portar el post com
+    l'usuari dins de la mateixa funció llegirpost()*/
     const llegirPost = async (id) => {
         const response = await fetch(`${baseUrlPosts}/${id}`);
         post.value = await response.json();
+
+        const response2 = await fetch(`${baseUrlUsers}/${post.value.userId}`)
+        user.value = await response2.json();
     }
 
     const llegirUsers = async () => {
@@ -23,10 +28,10 @@ export default function usePostAndUser(){
         user.value = await response.json()
     }
 
-    const llegirUser = async (id) => {
-        const response = await fetch(`${baseUrlUsers}/${id}`)
-        user.value = await response.json()
-    }
+    // const llegirUser = async (id) => {
+    //     const response = await fetch(`${baseUrlUsers}/${id}`)
+    //     user.value = await response.json()
+    // }
 
     return {
         posts,
@@ -36,6 +41,6 @@ export default function usePostAndUser(){
         users,
         llegirUsers,
         user,
-        llegirUser
+        // llegirUser
     }
 }

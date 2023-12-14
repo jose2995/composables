@@ -14,24 +14,21 @@
   const route = useRoute()
   const postId = route.params.id
   
+  /*Fico en una constant els valors retornats per la funció usePostAndUser
+  les quals son el post, la funció asincrona que fa el get per agafar la informació del post, 
+  el usuari i la funció asincrona que fa el get per agafar la informació del post*/
+  const {post,llegirPost, user} = usePostAndUser()
 
-  // const {post,llegirPost} = usePost()   --> Utilitzant un composable per Post/Posts
-  // llegirPost(postId)
+  /*Com que la funció llegirUser necesita com a entrada de paràmetre una propietat
+  de l'objecte post i la funció llegirPost es asincrona, triga una mica en agafar el 
+  el post indicat, la funcíó llegirUser no es pot executar al mateix temps que llegirPost
+  (ja que encara no li ha arribat cap valor de llegirPost), llavors s'ha de fe un .then(()=>{...})
+  amb la funció que volem que executi just després de que llegirPost hagi agafat el post indicat.*/
 
-  // const {user,llegirUser} = useUser()   --> Utilitzant un composable per User/Users
-  // llegirUser(userId)
+  // llegirPost(postId).then(()=>{
+  //   llegirUser(post.value.userId)   --> Aquest codi funciona també
+  // })
 
-
-  // Ara utilitzant un composable per Post/Posts i User/Users
-  let userIdFromPost = post.value.userId 
-  
-  llegirPost(postId).then(()=>{
-    llegirUser(userIdFromPost)
-  })
-
-  const {post,llegirPost} = usePostAndUser()
-
-  // console.log(userIdFromPost)
-
+    llegirPost(postId)
 
 </script>
