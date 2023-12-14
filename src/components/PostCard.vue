@@ -19,7 +19,7 @@
       width="150"
       height="150"
     />
-    <router-link :to="{ name: 'Post', params: { id: post.id, userId: props.post.userId } }">
+    <router-link :to="{ name: 'Post', params: { id: post.id } }">
       {{ post.title }}
     </router-link>
   </div>

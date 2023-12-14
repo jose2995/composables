@@ -13,7 +13,6 @@
 
   const route = useRoute()
   const postId = route.params.id
-  const userId = route.params.userId
   
 
   // const {post,llegirPost} = usePost()   --> Utilitzant un composable per Post/Posts
@@ -24,8 +23,15 @@
 
 
   // Ara utilitzant un composable per Post/Posts i User/Users
-  const {post,llegirPost,user,llegirUser} = usePostAndUser()
-  llegirPost(postId)
-  llegirUser(userId)
+  let userIdFromPost = post.value.userId 
+  
+  llegirPost(postId).then(()=>{
+    llegirUser(userIdFromPost)
+  })
+
+  const {post,llegirPost} = usePostAndUser()
+
+  // console.log(userIdFromPost)
+
 
 </script>
